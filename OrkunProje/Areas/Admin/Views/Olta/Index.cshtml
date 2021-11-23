@@ -1,0 +1,72 @@
+﻿@using DAL.Entities
+@model List<Olta>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-bell-o"></i>Olta Listesi
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-advance table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <i class="fa fa-briefcase"></i> İlan No
+                                </th>
+                                <th class="hidden-xs">
+                                    <i class="fa fa-user"></i> Başlık
+                                </th>
+                                <th>
+                                    <i class="fa fa-shopping-cart"></i> Fiyat
+                                </th>
+                                <th>
+                                    <i class="fa fa-shopping-cart"></i> Model
+                                </th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(Olta olta in Model)
+                            {
+                            <tr>
+                                <td class="highlight">
+                                    <div class="success"></div>
+                                    <a target="_blank" href="@Url.Action("Detay","Olta",new {area = "", ilanNo = olta.İlanNo})"> @olta.İlanNo </a>
+                                </td>
+                                <td class="hidden-xs"> @olta.Baslik </td>
+                                <td>$@olta.Fiyat.ToString("N2") </td>
+                                <td> @olta.Baslik </td>
+                                <td> @olta.Misina </td>
+                                <td>
+                                    <a href="@Url.Action("Ekle", "Olta", new { id = olta.Id})" class="btn btn-outline btn-circle btn-sm purple">
+                                        <i class="fa fa-edit"></i> Düzenle
+                                    </a>
+                                    <a href="@Url.Action("Sil","Olta", new { id = olta.Id})" class="btn btn-outline btn-circle btn-sm purple">
+                                        <i class="fa fa-delete"></i> Sil
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+
+</div>

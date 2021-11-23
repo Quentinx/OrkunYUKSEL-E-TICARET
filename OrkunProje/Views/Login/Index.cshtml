@@ -1,0 +1,53 @@
+﻿@using DAL.Entities
+@model Kullanici
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            @Html.Partial("~/Views/Partials/_SolMenu.cshtml")
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        @if (ViewBag.Mesaj != null)
+                        {
+                            <div>@ViewBag.Mesaj</div>
+                        }
+
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "checkout" }))
+                        {
+                            <div id="customer_details" class="col2-set">
+                                <div class="col-1">
+                                    <div class="woocommerce-billing-fields">
+                                        <h3>Giriş Yap</h3>
+
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">
+                                                Kullanıcı Adı<abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            @Html.TextBoxFor(p => p.KullaniciAdi, new { @placeholder = "Kullanıcı Adı", @id = "billing_first_name", @class = "input-text " })
+
+                                        </p>
+
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">
+                                                Şifre<abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            @Html.TextBoxFor(p => p.Sifre, new { @placeholder = "Şifre", @id = "billing_first_name", @type = "password", @class = "input-text " })
+
+                                        </p>
+
+
+
+                                        <input type="submit" value="Giriş Yap" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

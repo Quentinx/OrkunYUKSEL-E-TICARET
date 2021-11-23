@@ -1,0 +1,60 @@
+﻿@using DAL.Entities
+@using DAL.ViewModels
+@model VMOlta_OltaOzellik
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            <div class="portlet-body form">
+                @using (Html.BeginForm("Ekle", "Olta", new { id = Model != null ? Model.Olta.Id : 0 }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Başlık</label>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(b => b.Olta.Baslik, new { @class = "form-control", @placeholder = "Baslik" })
+
+                                <span class="help-block"> Lütfen başlığı giriniz. </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Fiyat</label>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(b => b.Olta.Fiyat, new { @class = "form-control", @placeholder = "Fiyat" })
+
+                                <span class="help-block"> Lütfen başlığı giriniz. </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Özellikler</label>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(b => b.OltaOzellik.Olta, new { @class = "form-control", @placeholder = "Ozellikler" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(p => p.OltaOzellik.Olta, new List<SelectListItem> {
+                            new SelectListItem { Text = "Spin", Value = "0" },
+                            new SelectListItem { Text = "Lrf", Value = "1" },
+                        }, new {  @class="form-control"})
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Olta Ekle</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

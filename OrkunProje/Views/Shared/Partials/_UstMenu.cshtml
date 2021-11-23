@@ -1,0 +1,17 @@
+﻿@using BL.Session
+
+<ul>
+    <li><a href="@Url.Action("Index","Home",new { area="Admin"})"target="_blank"><i class="fa fa-user"></i> Yönetim Paneli</a></li>
+    <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+    <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+    @if (SessionKontrol.Kontrol == null)
+    {
+        <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-user"></i> Giriş Yap</a></li>
+        <li><a href="@Url.Action("Kayit","Kullanici")"><i class="fa fa-user"></i> Kayıt Ol</a></li>
+    }
+    else
+    {
+        <li>@SessionKontrol.Kontrol.Adi @SessionKontrol.Kontrol.Soyadi Hoşgeldiniz.</li>
+        <li><a href="@Url.Action("Cikis","Login")"><i class="fa fa-user"></i> Çıkış</a></li>
+    }
+</ul>

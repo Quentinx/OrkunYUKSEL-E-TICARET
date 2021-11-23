@@ -1,0 +1,18 @@
+﻿@{
+    string controller = Url.RequestContext.RouteData.Values["controller"].ToString();
+    string action = Url.RequestContext.RouteData.Values["action"].ToString();
+}
+
+
+<ul class="nav navbar-nav">
+    <li @if (controller == "Home" && action == "Index") { @: class="active"
+        }><a href="@Url.Action("Index","Home")">Anasayfa</a></li>
+    <li @if (controller == "Olta" && action == "Index") { @: class="active"
+        }><a href="@Url.Action("Index","Olta")">Oltalar</a></li>
+    <li><a href="#">Single product</a></li>
+    <li><a href="#">Cart</a></li>
+    <li><a href="#">Checkout</a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#">Others</a></li>
+    <li><a href="#">Contact</a></li>
+</ul>
